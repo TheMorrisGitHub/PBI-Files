@@ -1,0 +1,23 @@
+Power Query M Formulas:
+
+To replace Null in one column with values from other. The Column to look at is ID.1, the column to take the new value is ID. Used in Warranty Recovery File.
+
+= Table.ReplaceValue(
+    #"Reordered Columns1",
+    each [ID.1],  // Activa el procesamiento para TODAS las filas
+    each if [ID.1] = null 
+         then [ID]
+         else [ID.1],  
+    Replacer.ReplaceValue,   // "Usa siempre el valor calculado (new)"
+    {"ID.1"}          // Aplica solo a esta columna
+)
+
+
+Variation of previous formula but with multiplication.
+
+= Table.ReplaceValue(#"Changed Type3",
+each [Amount USD],
+each if [Inv Currency] <> "USD" then [Amount Local] * [FX Group] else [Amount USD],
+Replacer.ReplaceValue,{"Amount USD"})
+
+
