@@ -9,7 +9,20 @@ To replace Null in one column with values from other. The Column to look at is I
          then [ID]
          else [ID.1],  
     Replacer.ReplaceValue,   // "Usa siempre el valor calculado (new)"
-    {"ID.1"}          // Aplica solo a esta columna
+    {"ID.1"}          // Aplica solo a esta columns
+)
+
+Variation with Nested If.
+= Table.ReplaceValue(
+    #"Reordered Columns1",
+    each [CATEGORY],  // Activa el procesamiento para TODAS las filas
+    each if [CATEGORY] = null and [Order Number] <> null then "NOT IN MSH020 - OLD ORDER" //First Tag Category
+    else if [CATEGORY] = null and [Book of account] = "AP0" or [Book of account] = "RV0" then "FREIGHT EXPENSES" //Second Tag Category
+    else if [CATEGORY] = null and [Book of account] = "AR0" or [Book of account] = "BA1" then "CREDIT CUSTOMER MANUAL" //Third Tag Category
+    else if [CATEGORY] = null then "OTHERS" //Last Tag Category
+    else [CATEGORY],  
+    Replacer.ReplaceValue,   
+    {"CATEGORY"}          // Aplica solo a esta columna
 )
 
 
