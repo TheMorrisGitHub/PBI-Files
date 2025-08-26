@@ -36,3 +36,13 @@ Replacer.ReplaceValue,{"Amount USD"})
 
 //Converted to a list to be able to call multiples steps in other queries.
 https://www.youtube.com/watch?v=weafpG2yG1w&t=393s
+
+
+//Make parameter for the source, and stage the path for the other queries video and min 8:38:
+	https://youtu.be/D6ho5zOwZnA?si=8ENlqTJMEUe7uKVd&t=518
+
+//Substitute Values from Other Query columns:
+	https://www.thebiccountant.com/2017/07/23/transforming-a-column-with-values-from-another-column-in-powerbi-and-powerquery-in-excel/
+
+
+
